@@ -126,5 +126,12 @@ function check_radio(arena_id, pirate_row, bet_number) {
 }
 
 // Adds MAX TER button to the top of the page and sets an on-click action to call the main method
-$("div#el a:first").after('<br><input id="maxter" type="button" value="Max TER"/>');
 $("input#maxter").on("click", calc_maxter);
+
+// Allows clicking anywhere in the bet table cell to select the radio button
+$("td").on('click', function () {
+  $(this).find('input:radio').prop("checked", true).trigger("click");
+});
+$("td *").on('click', function (event) {
+  event.stopPropagation();
+});

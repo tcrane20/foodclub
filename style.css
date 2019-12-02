@@ -68,6 +68,7 @@ td.lost {
 }
 .error {
     background-color: #FF0000;
+    color: white;
 }
 
 th {
@@ -101,4 +102,8 @@ form {
 
 .vue-chart div {
     overflow: hidden !important;
+}
+
+#options td {
+    padding-right: 100px;
 }

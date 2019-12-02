@@ -1,39 +1,43 @@
 <head>
-    <title>NeoFoodClub.fr</title>
+    <title>NeoFoodClub</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <!--link rel="shortcut icon" href="/favicon.png"-->
 </head>
 
 <script src="jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="vue.js"></script>
 <script src="js.cookie.min.js"></script>
 
 <div id="el">
-    <label>Normal Mode:
-        <input type="radio" v-model="displayMode" value="normal">
-    </label> -
-    <label>Custom Mode:
-        <input type="radio" v-model="displayMode" value="custom">
-    </label> -
-    <label>Dropdown Mode:
-        <input type="radio" v-model="displayMode" value="dropdown">
-    </label> -
-    <label>FA details:
-        <input type="checkbox" v-model="showFAExplanation">
-    </label> -
-    <label>Odds Timeline:
-        <input type="checkbox" v-model="showOddsTimeline">
-    </label> -
     <label>Round
         <input type="number" min="1" max="99999" style="width: 60px" v-model="round">
-    </label> -
+    </label>
     <span style="font-size: 10px">
-    <span :class="timestampClass()">Data from {{displayAsDate(timestamp)}}</span> -
-    <span :class="lastUpdateClass()">Last Update {{displayAsDate(lastUpdate)}}</span>
+        <span :class="timestampClass()">Data from {{displayAsDate(timestamp)}}</span> -
+        <span :class="lastUpdateClass()">Last Update {{displayAsDate(lastUpdate)}}</span> -
+        <span>Last Change {{displayAsDate(lastChange)}}</span>
     </span>
-    <span style="font-size: 13px">    
-     - Last Change {{displayAsDate(lastChange)}}
-    </span> - Written by <a href="https://www.reddit.com/user/au_travail/">/u/au_travail</a>
+    
+    <br>
+    <table id="options">
+        <tr>
+            <td><label>Normal Mode: <input type="radio" v-model="displayMode" value="normal"></label></td>
+            <td><label>FA details: <input type="checkbox" v-model="showFAExplanation"></label></td>
+        </tr>
+        <tr>
+            <td><label>Custom Mode: <input type="radio" v-model="displayMode" value="custom"></label></td>
+            <td><label>Odds Timeline: <input type="checkbox" v-model="showOddsTimeline"></label></td>
+        </tr>
+        <tr>
+            <td><label>Dropdown Mode: <input type="radio" v-model="displayMode" value="dropdown"></label></td>
+        </tr>
+    </table>
+
+    <br><input id="maxter" type="button" value="Max TER"/><br>
+
     <table border="1" v-show="displayMode!=='dropdown'">
         <thead>
             <tr>
@@ -179,6 +183,7 @@
             </tr>
         </tbody>
     </table>
+    <br>
     <table border="1">
         <thead>
             <tr>
