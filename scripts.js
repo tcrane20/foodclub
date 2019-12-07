@@ -135,3 +135,14 @@ $("td").on('click', function () {
 $("td *").on('click', function (event) {
   event.stopPropagation();
 });
+
+function reload_page() {
+    var url = $("input#nfc_url").val();
+    var query = url.replace(/.*neofoodclub.fr\//, "")
+    window.location = window.location.href + query;
+    $("input#nfc_url").val("")
+}
+
+// Add code bar
+$("input#maxter").after('<br><input id="nfc_url" type="textbox" placeholder="Place NFC link here"><input id="reload_page" type="button" value="GO!">');
+$("input#reload_page").on("click", reload_page);
